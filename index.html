@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Password Master - 安全密码生成器</title>
+    <meta name="description" content="一个简单易用、安全可靠的在线密码生成工具，支持自定义长度和字符集，实时强度评估，一键复制。" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Password Master</h1>
+      <p class="tagline">安全、快速的在线密码生成器</p>
+    </header>
+
+    <main class="container" role="main">
+      <section class="output-section" aria-labelledby="output-label">
+        <label id="output-label" for="password-output">生成的密码</label>
+        <div class="output-row">
+          <input id="password-output" class="password-output" type="text" readonly aria-live="polite" />
+          <button id="copy-btn" class="btn secondary" aria-label="复制密码">复制</button>
+        </div>
+        <div class="strength">
+          <div class="strength-bar" aria-hidden="true">
+            <div id="strength-fill"></div>
+          </div>
+          <span id="strength-text" class="strength-text" aria-live="polite">强度未知</span>
+        </div>
+      </section>
+
+      <section class="controls" aria-labelledby="controls-title">
+        <h2 id="controls-title">生成选项</h2>
+
+        <div class="control">
+          <label for="length">长度: <span id="length-value">16</span></label>
+          <input id="length" type="range" min="8" max="64" value="16" />
+        </div>
+
+        <fieldset class="control" aria-labelledby="charset-legend">
+          <legend id="charset-legend">字符集</legend>
+          <label class="checkbox">
+            <input id="lowercase" type="checkbox" checked /> 小写字母 (a-z)
+          </label>
+          <label class="checkbox">
+            <input id="uppercase" type="checkbox" checked /> 大写字母 (A-Z)
+          </label>
+          <label class="checkbox">
+            <input id="numbers" type="checkbox" checked /> 数字 (0-9)
+          </label>
+          <label class="checkbox">
+            <input id="symbols" type="checkbox" /> 特殊字符 (!@#$…)
+          </label>
+        </fieldset>
+
+        <fieldset class="control" aria-labelledby="rules-legend">
+          <legend id="rules-legend">规则</legend>
+          <label class="checkbox">
+            <input id="exclude-similar" type="checkbox" /> 排除相似字符 (0,O,o,1,l,I)
+          </label>
+          <label class="checkbox">
+            <input id="require-each" type="checkbox" checked /> 至少包含每种已选字符类型
+          </label>
+        </fieldset>
+
+        <div class="actions">
+          <button id="generate-btn" class="btn primary">生成密码</button>
+          <button id="regenerate-btn" class="btn">再来一个</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite" class="toast" hidden>已复制到剪贴板</div>
+
+    <footer class="site-footer">
+      <small>客户端生成 · 不上传任何数据 · 支持系统暗色模式</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
+
+
+
+
